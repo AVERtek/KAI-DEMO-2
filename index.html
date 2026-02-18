@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kai Demo</title>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=0-0000000000"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', '0-0000000000');
+    </script>
+
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js"></script>
+    <script src="https://unpkg.com/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+
+    <style>
+        body { background-color: #26282A; margin: 0; padding: 0; }
+        .container { column-count: 1; column-width: 500px; column-gap: 10px; padding: 20px; }
+        .card { break-inside: avoid; background-color: rgb(40, 38, 42); border: 2px solid rgb(40, 38, 42); padding: 10px; margin-bottom: 1em; }
+        .card1 { background-color: #26282A; padding: 5px; margin-top: 10px; }
+        .marginauto { margin: 10px auto; display: block; }
+        model-viewer { width: 100%; height: 600px; --progress-bar-color: #017CB3; }
+        .ar-button {
+            z-index: 9; 
+            background-color: #017CB3; 
+            border-radius: 8px; 
+            border: 1px solid white; 
+            position: absolute; 
+            top: 10px; 
+            right: 10px; 
+            height: 40px; 
+            padding: 0 15px;
+            cursor: pointer;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        a { color: #017CB3; text-decoration: none; }
+    </style>
+</head>
+
+<body>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-0000000" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <div class="container">
+        <div class="card">
+            <img class="marginauto" src="images/AVERtek-Logo-final-white.png" alt="Logo" style="width: 300px; height: auto">
+            <h1 style="text-align: center; color:#FFFFFF; font-family:arial;">BRAND. STORYTELLING. REALITY.</h1>
+            <h2 style="text-align: center; color:#017CB3; font-family:arial;">IMAGINATION CONCEIVED!</h2>
+        </div>
+
+        <div class="card">
+            <model-viewer 
+                id="model-viewer" 
+                src="Models/wave_default.glb?sound=Sound/Kai Story human_v2.mp3" 
+                ios-src="Models/HKAI_DANCING_TEST.usdz"
+                ar 
+                ar-modes="scene-viewer webxr quick-look" 
+                ar-placement="floor"
+                ar-scale="auto"
+                camera-controls 
+                autoplay 
+                shadow-intensity="1"
+                loading="eager" 
+                alt="Kai Demo Model">
+                
+                <button slot="ar-button" class="ar-button">
+                    👆 <strong>AUGMENTED REALITY!</strong>
+                </button>
+            </model-viewer>
+
+            <div class="card1">
+                <section class="attribution">
+                    <h1 style="text-align: center; color:#FFFFFF; font-family:arial;">EXPERIENTIAL</h1>
+                    <p align="center">
+                        <audio controls autoplay loop id="sound">
+                            <source src="Sound/Kai Story human_v2.mp3" type="audio/mpeg" />
+                        </audio>
+                    </p>
+                </section>
+            </div>
+        </div>
+
+<div class="card">
+     <h2 style="text-align: center;" markdown="1"><b style="color:#FFFFFF;"><p style="font-family:arial"><em> 4D Augmented Reality is... </em></p></h2></b> 
+     <h1 style="text-align: center;" markdown="1"><b style="color:#ffdf00;"><p style="font-family:arial"> THEATER BEYOND THE MIND </p></h1></b> 
+     </div>  
+  <div class="card"> 
+   <h1 style="text-align: center;" markdown="1"><b style="color:#FFFFFF;"><p style="font-family:arial"> <em> Answers to Critical Decision-Making Questions: </em></p></h1></b>
+     <h2 style="text-align: center;" markdown="1"><p style="font-family:arial"><b style="color:#ffdf00;"><b>DISCOVER:</b><a href="https://vimeo.com/899988851/5cb3fc9712" onclick="getOutboundLink('https://vimeo.com/899988851/5cb3fc9712');return false;"><b style="color:#017CB3;"> STORY & BRAND AWARENESS</a></b></h2></p>
+     <h2 style="text-align: center;" markdown="1"><p style="font-family:arial"><b>ENGAGE:</b><a href="https://avertek.net/ar-examples" onclick="getOutboundLink('https://avertek.net/ar-examples');return false;"><b style="color:#017CB3;"><b> UNIQUE SELLING PROPOSTIONS</b></b></h2></a></p></a></h2>
+     <h2 style="text-align: center;" markdown="1"><p style="font-family:arial"><b>EXPLORE:</b><a href="https://avertek.net/" onclick="getOutboundLink('https://avertek.net/');return false;"><b style="color:#017CB3;"><b> FEATURES, ADVANTAGES, BENEFITS</b></b></h2></a></p></a></h2>
+     <h2 style="text-align: center;" markdown="1"><p style="font-family:arial"><b>REALIZE:</b><a href="https://avertek.net/xr-now" onclick="getOutboundLink('https://avertek.net/xr-now');return false;"><b style="color:#017CB3;"> VALUE</a></b></b></p></h2>
+     <h2 style="text-align: center;" markdown="1"><p style="font-family:arial"><b style="color:#ffdf00;"><b>CONTINUE:</b><a href="https://avertek.net/contact-us" onclick="getOutboundLink('https://avertek.net/contact-us');return false;"><b style="color:#017CB3;"><b> THE STORY</b></b></h2></a></p></a></h2> 
+     <br><br>
+    <h1 style="text-align: center;" markdown="1"><b style="color:#FFFFFF;"><p style="font-family:arial"><em> Proven Results, Amplifies Every Marketing Campaign! </em></p></h1></b> 
+    </div>
+  
+ <div class="card">
+    <h2 style="text-align: center;" markdown="1"><a href="https://avertek.net/" onclick="getOutboundLink('https://avertek.net/contact-us');
+       return false;"><b style="color:#017CB3;"><p style="font-family:arial"> REIMAGINE YOUR BRAND'S STORY IN 4D/AR</p></a></h2></b>
+    </div>
+ 
+   <div class="card">
+    <img alt="AR Instructions" src="images/AR Instructions wht-trans3.png" img class="marginauto" style="max-width: 100%; max-height: 350px">
+    </style>  
+    <h4 style="text-align: center;" markdown="1"><b style="color:#FFFFFF;"><p style="font-family:arial"><em> if AR button does not appear on mobile device, use another browser</em></p></h4></b>
+   </div>
+   </div>
+
+    <script>
+        function Sync(selector, audioSelector) {
+            var modelViewer = document.querySelector(selector);
+            var sound = document.querySelector(audioSelector);
+
+            sound.addEventListener("timeupdate", () => {
+                modelViewer.currentTime = sound.currentTime;
+            });
+
+            sound.addEventListener("pause", () => { modelViewer.pause(); });
+            sound.addEventListener("play", () => { modelViewer.play(); });
+
+            document.addEventListener("visibilitychange", () => {
+                if (document.visibilityState !== "visible") { sound.pause(); }
+            });
+        }
+
+        window.addEventListener("load", () => {
+            Sync("#model-viewer", "#sound");
+        });
+
+        var getOutboundLink = function(url) {
+            gtag('event', 'click', {
+                'event_category': 'outbound',
+                'event_label': url,
+                'transport_type': 'beacon',
+                'event_callback': function(){ document.location = url; }
+            });
+            return false;
+        }
+    </script>
+</body>
+</html>
