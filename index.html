@@ -19,42 +19,49 @@
     <script src="https://unpkg.com/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
 
     <style>
-        body { background-color: #26282A; margin: 0; padding: 0; }
+        body { background-color: #26282A; margin: 0; padding: 0; font-family: Arial, sans-serif; }
         .container { column-count: 1; column-width: 500px; column-gap: 10px; padding: 20px; }
         .card { break-inside: avoid; background-color: rgb(40, 38, 42); border: 2px solid rgb(40, 38, 42); padding: 20px; margin-bottom: 1em; text-align: center; }
         .card1 { background-color: #26282A; padding: 5px; margin-top: 10px; }
         .marginauto { margin: 10px auto; display: block; }
         
         /* Model viewer hidden from 2D view */
-        model-viewer#model-viewer { 
-            width: 1px; 
-            height: 1px; 
-            visibility: hidden; 
-            position: absolute; 
-        }
-
-        /* Hidden audio element */
+        model-viewer#model-viewer { width: 1px; height: 1px; visibility: hidden; position: absolute; }
         #sound { display: none; }
 
-        /* AR Launch Button styling */
+        /* Narrow AR Button to match copy width */
         .ar-launch-btn {
             background-color: #017CB3;
             color: white;
             border: 2px solid #FFFFFF;
-            border-radius: 12px;
-            padding: 20px 30px;
-            font-size: 1.2rem;
+            border-radius: 8px;
+            padding: 15px 20px;
+            font-size: 1.1rem;
             font-weight: bold;
-            font-family: Arial, sans-serif;
             cursor: pointer;
-            transition: transform 0.2s ease;
+            transition: all 0.2s ease;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            margin: 20px 0;
-            width: 80%;
+            margin: 20px auto;
+            display: inline-block; /* Narrows to content width */
+            max-width: 90%;
         }
         .ar-launch-btn:active { transform: scale(0.95); }
+        .ar-launch-btn:disabled { background-color: #444; border-color: #666; cursor: not-allowed; opacity: 0.6; }
+
+        /* Desktop Warning Banner */
+        #mobile-requirement {
+            display: none;
+            background-color: #ffdf00;
+            color: #000;
+            padding: 15px;
+            font-weight: bold;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 2px solid #000;
+        }
 
         a { color: #017CB3; text-decoration: none; }
+        h1, h2, h4, p { font-family: arial; margin: 10px 0; }
     </style>
 </head>
 
@@ -62,14 +69,18 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-0000000" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="container">
-        <div class="card">
-            <img class="marginauto" src="images/AVERtek-Logo-final-white.png" alt="Logo" style="width: 300px; height: auto">
-            <h1 style="text-align: center; color:#FFFFFF; font-family:arial;">BRAND. STORYTELLING. REALITY.</h1>
-            <h2 style="text-align: center; color:#017CB3; font-family:arial;">IMAGINATION CONCEIVED!</h2>
+        <div id="mobile-requirement">
+            ⚠️ 4D AR Experience requires a mobile device (iOS or Android).
         </div>
 
         <div class="card">
-            <h1 style="text-align: center; color:#FFFFFF; font-family:arial;">EXPERIENTIAL</h1>
+            <img class="marginauto" src="images/AVERtek-Logo-final-white.png" alt="Logo" style="width: 300px; height: auto">
+            <h1 style="color:#FFFFFF;">BRAND. STORYTELLING. REALITY.</h1>
+            <h2 style="color:#017CB3;">IMAGINATION CONCEIVED!</h2>
+        </div>
+
+        <div class="card">
+            <h1 style="color:#FFFFFF;">EXPERIENTIAL</h1>
             
             <button id="manual-ar-trigger" class="ar-launch-btn">
                 ✨ LAUNCH 4D AR EXPERIENCE
@@ -95,56 +106,63 @@
             </audio>
 
             <div class="card1">
-                <p style="color: #666; font-family: arial; font-size: 0.9em;">
-                    Tap the button above to begin the journey.
+                <p style="color: #666; font-size: 0.9em;">
+                    Experience Kai's story in your space.
                 </p>
             </div>
         </div>
 
         <div class="card">
-             <h2 style="text-align: center;"><b style="color:#FFFFFF;"><p style="font-family:arial"><em> 4D Augmented Reality is... </em></p></h2></b> 
-             <h1 style="text-align: center;"><b style="color:#ffdf00;"><p style="font-family:arial"> THEATER BEYOND THE MIND </p></h1></b> 
+             <h2 style="color:#FFFFFF;"><em> 4D Augmented Reality is... </em></h2>
+             <h1 style="color:#ffdf00;"> THEATER BEYOND THE MIND </h1>
         </div>  
 
         <div class="card"> 
-            <h1 style="text-align: center;"><b style="color:#FFFFFF;"><p style="font-family:arial"> <em> Answers to Critical Decision-Making Questions: </em></p></h1></b>
-             <h2 style="text-align: center;"><p style="font-family:arial"><b style="color:#ffdf00;"><b>DISCOVER:</b><a href="#" onclick="getOutboundLink('https://vimeo.com/899988851/5cb3fc9712');return false;"><b style="color:#017CB3;"> STORY & BRAND AWARENESS</a></b></h2></p>
-             <h2 style="text-align: center;"><p style="font-family:arial"><b>ENGAGE:</b><a href="#" onclick="getOutboundLink('https://avertek.net/ar-examples');return false;"><b style="color:#017CB3;"><b> UNIQUE SELLING PROPOSTIONS</b></b></a></h2></p>
-             <h2 style="text-align: center;"><p style="font-family:arial"><b>EXPLORE:</b><a href="#" onclick="getOutboundLink('https://avertek.net/');return false;"><b style="color:#017CB3;"><b> FEATURES, ADVANTAGES, BENEFITS</b></b></a></h2></p>
-             <h2 style="text-align: center;"><p style="font-family:arial"><b>REALIZE:</b><a href="#" onclick="getOutboundLink('https://avertek.net/xr-now');return false;"><b style="color:#017CB3;"> VALUE</a></b></b></p></h2>
-             <h2 style="text-align: center;"><p style="font-family:arial"><b style="color:#ffdf00;"><b>CONTINUE:</b><a href="#" onclick="getOutboundLink('https://avertek.net/contact-us');return false;"><b style="color:#017CB3;"><b> THE STORY</b></b></a></h2></p> 
-             <br><br>
-            <h1 style="text-align: center;"><b style="color:#FFFFFF;"><p style="font-family:arial"><em> Proven Results, Amplifies Every Marketing Campaign! </em></p></h1></b> 
+            <h1 style="color:#FFFFFF;"><em> Answers to Critical Decision-Making Questions: </em></h1>
+            <h2><b style="color:#ffdf00;">DISCOVER:</b> <a href="https://vimeo.com/899988851/5cb3fc9712" onclick="return getOutboundLink('https://vimeo.com/899988851/5cb3fc9712');"><b style="color:#017CB3;">STORY & BRAND AWARENESS</b></a></h2>
+            <h2><b style="color:#FFFFFF;">ENGAGE:</b> <a href="https://avertek.net/ar-examples" onclick="return getOutboundLink('https://avertek.net/ar-examples');"><b style="color:#017CB3;">UNIQUE SELLING PROPOSTIONS</b></a></h2>
+            <h2><b style="color:#FFFFFF;">EXPLORE:</b> <a href="https://avertek.net/" onclick="return getOutboundLink('https://avertek.net/');"><b style="color:#017CB3;">FEATURES, ADVANTAGES, BENEFITS</b></a></h2>
+            <h2><b style="color:#FFFFFF;">REALIZE:</b> <a href="https://avertek.net/xr-now" onclick="return getOutboundLink('https://avertek.net/xr-now');"><b style="color:#017CB3;">VALUE</b></a></h2>
+            <h2><b style="color:#ffdf00;">CONTINUE:</b> <a href="https://avertek.net/contact-us" onclick="return getOutboundLink('https://avertek.net/contact-us');"><b style="color:#017CB3;">THE STORY</b></a></h2>
+            <br><br>
+            <h1 style="color:#FFFFFF;"><em> Proven Results, Amplifies Every Marketing Campaign! </em></h1> 
         </div>
 
         <div class="card">
-            <h2 style="text-align: center;"><a href="#" onclick="getOutboundLink('https://avertek.net/contact-us'); return false;"><b style="color:#017CB3;"><p style="font-family:arial"> REIMAGINE YOUR BRAND'S STORY IN 4D/AR</p></a></h2></b>
+            <h2><a href="https://avertek.net/" onclick="return getOutboundLink('https://avertek.net/contact-us');"><b style="color:#017CB3;">REIMAGINE YOUR BRAND'S STORY IN 4D/AR</b></a></h2>
         </div>
      
         <div class="card">
             <img alt="AR Instructions" src="images/AR Instructions wht-trans3.png" class="marginauto" style="max-width: 100%; max-height: 350px">
-            <h4 style="text-align: center;"><b style="color:#FFFFFF;"><p style="font-family:arial"><em> if AR button does not appear on mobile device, use another browser</em></p></h4></b>
+            <h4 style="color:#FFFFFF;"><em> if AR button does not appear on mobile device, use another browser</em></h4>
         </div>
     </div>
 
     <script>
+        // Check if device is mobile/tablet
+        function checkDevice() {
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            const banner = document.getElementById('mobile-requirement');
+            const btn = document.getElementById('manual-ar-trigger');
+            
+            if (!isMobile) {
+                banner.style.display = 'block';
+                btn.disabled = true;
+                btn.innerText = "MOBILE DEVICE REQUIRED";
+            }
+        }
+
         function Sync(selector, audioSelector) {
             var modelViewer = document.querySelector(selector);
             var sound = document.querySelector(audioSelector);
             var triggerBtn = document.querySelector("#manual-ar-trigger");
 
-            // Handle the manual AR Launch
             triggerBtn.addEventListener('click', () => {
-                // Ensure audio starts playing (browsers often block autoplay until a click)
                 sound.play();
                 modelViewer.activateAR();
             });
 
-            // Keep model animation in sync with audio time
-            sound.addEventListener("timeupdate", () => {
-                modelViewer.currentTime = sound.currentTime;
-            });
-
+            sound.addEventListener("timeupdate", () => { modelViewer.currentTime = sound.currentTime; });
             sound.addEventListener("pause", () => { modelViewer.pause(); });
             sound.addEventListener("play", () => { modelViewer.play(); });
 
@@ -154,6 +172,7 @@
         }
 
         window.addEventListener("load", () => {
+            checkDevice();
             Sync("#model-viewer", "#sound");
         });
 
