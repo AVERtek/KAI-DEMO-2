@@ -26,7 +26,6 @@
         
         /* Model viewer hidden from 2D view */
         model-viewer#model-viewer { width: 1px; height: 1px; visibility: hidden; position: absolute; }
-        #sound { display: none; }
 
         /* Narrow AR Button */
         .ar-launch-btn {
@@ -109,15 +108,15 @@
                 id="model-viewer" 
                 src="Models/wave_default.glb?sound=Sound/Kai Story human_v2.mp3" 
                 ios-src="Models/HKAI_DANCING_TEST.usdz"
-                ar ar-modes="scene-viewer webxr quick-look" 
-                ar-placement="floor" ar-scale="auto"
-                camera-controls shadow-intensity="1"
-                loading="lazy" alt="Kai Demo Model">
+                ar 
+                ar-modes="scene-viewer webxr quick-look" 
+                ar-placement="floor" 
+                ar-scale="auto"
+                camera-controls 
+                shadow-intensity="1"
+                loading="lazy" 
+                alt="Kai Demo Model">
             </model-viewer>
-
-            <audio loop id="sound">
-                <source src="Sound/Kai Story human_v2.mp3" type="audio/mpeg" />
-            </audio>
 
             <div class="card1">
                 <p style="color: #666; font-size: 0.8em;">AR technology powered by AVERtek.</p>
@@ -160,35 +159,18 @@
             overlay.style.display = 'none';
         }
 
-        function Sync(selector, audioSelector) {
-            var modelViewer = document.querySelector(selector);
-            var sound = document.querySelector(audioSelector);
-            var triggerBtn = document.querySelector("#manual-ar-trigger");
+        const modelViewer = document.querySelector("#model-viewer");
+        const triggerBtn = document.querySelector("#manual-ar-trigger");
 
-            triggerBtn.addEventListener('click', () => {
-                if (isMobile) {
-                    // Start audio ONLY on launch
-                    sound.play();
-                    modelViewer.activateAR();
-                } else {
-                    // Show pop-down notification for desktop
-                    modal.style.display = 'block';
-                    overlay.style.display = 'block';
-                }
-            });
-
-            sound.addEventListener("timeupdate", () => { modelViewer.currentTime = sound.currentTime; });
-            
-            // Stop sound if they exit AR (supported in some browsers)
-            modelViewer.addEventListener('ar-status', (event) => {
-                if (event.detail.status === 'not-presenting') {
-                    sound.pause();
-                    sound.currentTime = 0;
-                }
-            });
-        }
-
-        window.addEventListener("load", () => { Sync("#model-viewer", "#sound"); });
+        triggerBtn.addEventListener('click', () => {
+            if (isMobile) {
+                // Just launch AR. The model's internal sound param will handle audio.
+                modelViewer.activateAR();
+            } else {
+                modal.style.display = 'block';
+                overlay.style.display = 'block';
+            }
+        });
 
         var getOutboundLink = function(url) {
             gtag('event', 'click', { 'event_category': 'outbound', 'event_label': url, 'transport_type': 'beacon' });
