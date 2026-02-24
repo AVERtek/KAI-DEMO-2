@@ -90,6 +90,8 @@
         <button class="close-btn" onclick="closeModal()">Got it!</button>
     </div>
 
+    <audio id="ar-audio" src="Sound/Kai Story human_v2.mp3" loop></audio>
+
     <div class="container">
         <div class="card">
             <img class="marginauto" src="images/AVERtek-Logo-final-white.png" alt="Logo" style="width: 300px; height: auto">
@@ -134,15 +136,15 @@
         </div>  
 
         <div class="card"> 
-   <h1 style="text-align: center;" markdown="1"><b style="color:#FFFFFF;"><p style="font-family:arial"> <em> Answers to Critical Decision-Making Questions: </em></p></h1></b>
-     <h2 style="text-align: center;" markdown="1"><p style="font-family:arial"><b style="color:#ffdf00;"><b>DISCOVER:</b><a href="https://vimeo.com/899988851/5cb3fc9712" onclick="getOutboundLink('https://vimeo.com/899988851/5cb3fc9712');return false;"><b style="color:#017CB3;"> STORY & BRAND AWARENESS</a></b></h2></p>
-     <h2 style="text-align: center;" markdown="1"><p style="font-family:arial"><b>ENGAGE:</b><a href="https://avertek.net/ar-examples" onclick="getOutboundLink('https://avertek.net/ar-examples');return false;"><b style="color:#017CB3;"><b> UNIQUE SELLING PROPOSTIONS</b></b></h2></a></p></a></h2>
-     <h2 style="text-align: center;" markdown="1"><p style="font-family:arial"><b>EXPLORE:</b><a href="https://avertek.net/" onclick="getOutboundLink('https://avertek.net/');return false;"><b style="color:#017CB3;"><b> FEATURES, ADVANTAGES, BENEFITS</b></b></h2></a></p></a></h2>
-     <h2 style="text-align: center;" markdown="1"><p style="font-family:arial"><b>REALIZE:</b><a href="https://avertek.net/xr-now" onclick="getOutboundLink('https://avertek.net/xr-now');return false;"><b style="color:#017CB3;"> VALUE</a></b></b></p></h2>
-     <h2 style="text-align: center;" markdown="1"><p style="font-family:arial"><b style="color:#ffdf00;"><b>CONTINUE:</b><a href="https://avertek.net/contact-us" onclick="getOutboundLink('https://avertek.net/contact-us');return false;"><b style="color:#017CB3;"><b> THE STORY</b></b></h2></a></p></a></h2> 
-     <br><br>
-    <h1 style="text-align: center;" markdown="1"><b style="color:#FFFFFF;"><p style="font-family:arial"><em> Proven Results, Amplifies Every Marketing Campaign! </em></p></h1></b> 
-    </div>
+            <h1 style="text-align: center;"><b style="color:#FFFFFF;"><p style="font-family:arial"> <em> Answers to Critical Decision-Making Questions: </em></p></b></h1>
+            <h2 style="text-align: center;"><p style="font-family:arial"><b style="color:#ffdf00;"><b>DISCOVER:</b></b><a href="https://vimeo.com/899988851/5cb3fc9712" onclick="getOutboundLink('https://vimeo.com/899988851/5cb3fc9712');return false;"><b style="color:#017CB3;"> STORY & BRAND AWARENESS</a></b></h2>
+            <h2 style="text-align: center;"><p style="font-family:arial"><b>ENGAGE:</b><a href="https://avertek.net/ar-examples" onclick="getOutboundLink('https://avertek.net/ar-examples');return false;"><b style="color:#017CB3;"><b> UNIQUE SELLING PROPOSTIONS</b></b></a></h2>
+            <h2 style="text-align: center;"><p style="font-family:arial"><b>EXPLORE:</b><a href="https://avertek.net/" onclick="getOutboundLink('https://avertek.net/');return false;"><b style="color:#017CB3;"><b> FEATURES, ADVANTAGES, BENEFITS</b></b></a></h2>
+            <h2 style="text-align: center;"><p style="font-family:arial"><b>REALIZE:</b><a href="https://avertek.net/xr-now" onclick="getOutboundLink('https://avertek.net/xr-now');return false;"><b style="color:#017CB3;"> VALUE</a></b></h2>
+            <h2 style="text-align: center;"><p style="font-family:arial"><b style="color:#ffdf00;"><b>CONTINUE:</b></b><a href="https://avertek.net/contact-us" onclick="getOutboundLink('https://avertek.net/contact-us');return false;"><b style="color:#017CB3;"><b> THE STORY</b></b></a></h2> 
+            <br><br>
+            <h1 style="text-align: center;"><b style="color:#FFFFFF;"><p style="font-family:arial"><em> Proven Results, Amplifies Every Marketing Campaign! </em></p></h1></b> 
+        </div>
 
         <div class="card">
             <h2><a href="https://avertek.net/" onclick="return getOutboundLink('https://avertek.net/contact-us');"><b style="color:#017CB3;">REIMAGINE YOUR BRAND'S STORY IN 4D/AR</b></a></h2>
@@ -158,18 +160,32 @@
         const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
         const modal = document.getElementById('device-modal');
         const overlay = document.getElementById('modal-overlay');
+        const modelViewer = document.querySelector("#model-viewer");
+        const triggerBtn = document.querySelector("#manual-ar-trigger");
+        const arAudio = document.getElementById('ar-audio');
 
         function closeModal() {
             modal.style.display = 'none';
             overlay.style.display = 'none';
         }
 
-        const modelViewer = document.querySelector("#model-viewer");
-        const triggerBtn = document.querySelector("#manual-ar-trigger");
+        // Handle Audio Sync for WebXR Mode
+        modelViewer.addEventListener('ar-status', (event) => {
+            if (event.detail.status === 'session-started') {
+                // When WebXR AR starts, play the audio
+                arAudio.play();
+            } else if (event.detail.status === 'not-presenting') {
+                // When AR exits, stop the audio
+                arAudio.pause();
+                arAudio.currentTime = 0;
+            }
+        });
 
         triggerBtn.addEventListener('click', () => {
             if (isMobile) {
-                // Just launch AR. The model's internal sound param will handle audio.
+                // Launch AR
+                // Scene Viewer will use the ?sound= param in the src
+                // WebXR will trigger the 'ar-status' listener above
                 modelViewer.activateAR();
             } else {
                 modal.style.display = 'block';
